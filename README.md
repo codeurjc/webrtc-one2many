@@ -17,11 +17,15 @@ The application has beed designed as a WebRTC video broadcasting, i.e. a WebRTC-
 | kms.ws.uri                  | ws://127.0.0.1:8888/kurento  | KMS (under test) WebSocket URL                                                                                                                                                                                                    |
 | fake.kms.ws.uri             | ws://127.0.0.1:8888/kurento  | KMS (for fake clients) websocket URL. Several instances of KMS can be used for fake clients, simply separating the URLs with the symbol ",", e.g: fake.kms.ws.uri=ws://192.168.0.101:8888/kurento,ws://192.168.0.102:8888/kurento |
 
-Therefore, typically we are going to use at least two different KMS's (one for the KMS under test, another for supporting the *fake clients*). We can start the application using the following Maven command:
+Therefore, typically we are going to use at least two different KMS's (one for the KMS under test, another for supporting the *fake clients*). In order to start the applciation, we need to clone this repository first. Then, ee can start the application using Maven:
 
 ```bash
+git clone https://github.com/codeurjc/webrtc-one2many
+cd webrtc-one2many
 mvn spring-boot:run -Dkms.ws.uri=ws://192.168.0.100:8888/kurento -Dfake.kms.ws.uri=ws://192.168.0.101:8888/kurento
 ```
+
+After that, the application should be up and running on the URL https://localhost:8443/.
 
 The application GUI has different configuration parameters to tune the behavior of the application.
 
