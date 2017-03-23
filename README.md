@@ -25,9 +25,7 @@ cd webrtc-one2many
 mvn spring-boot:run -Dkms.ws.uri=ws://192.168.0.100:8888/kurento -Dfake.kms.ws.uri=ws://192.168.0.101:8888/kurento
 ```
 
-After that, the application should be up and running on the URL https://localhost:8443/.
-
-The application GUI has different configuration parameters to tune the behavior of the application.
+After that, the application should be up and running on the URL https://localhost:8443/. The application GUI has different configuration parameters to tune its behavior.
 
 - *Session number*: The application can ben *multi-session*, meaning that there can be different simultaneous sessions. Each session is identified by the field *Session number* in the GUI.
 - *Bandwidth (kbps)*: Bandwidth to configure all the WebRtcEndpoints elements handled by the application.
