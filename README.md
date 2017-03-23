@@ -17,7 +17,7 @@ The application has beed designed as a WebRTC video broadcasting, i.e. a WebRTC-
 | kms.ws.uri                  | ws://127.0.0.1:8888/kurento  | KMS (under test) WebSocket URL                                                                                                                                                                                                    |
 | fake.kms.ws.uri             | ws://127.0.0.1:8888/kurento  | KMS (for fake clients) websocket URL. Several instances of KMS can be used for fake clients, simply separating the URLs with the symbol ",", e.g: fake.kms.ws.uri=ws://192.168.0.101:8888/kurento,ws://192.168.0.102:8888/kurento |
 
-Therefore, we can start the application using the following command. Typically we are going to use at least two different KMS's (one for the KMS under test, another for supporting the *fake clients*):
+Therefore, typically we are going to use at least two different KMS's (one for the KMS under test, another for supporting the *fake clients*). We can start the application using the following Maven command:
 
 ```bash
 mvn spring-boot:run -Dkms.ws.uri=ws://192.168.0.100:8888/kurento -Dfake.kms.ws.uri=ws://192.168.0.101:8888/kurento
@@ -25,22 +25,22 @@ mvn spring-boot:run -Dkms.ws.uri=ws://192.168.0.100:8888/kurento -Dfake.kms.ws.u
 
 The application GUI has different configuration parameters to tune the behavior of the application.
 
-- *Session number*: The app can ben **multi-session**, meaning that there can be different simultaneous sessions. Each session is identified by the field *Session number* in the GUI.
-- *Bandwidth (kbps)*: Bandwidth to configure all the WebRtcEndpoints elements handled by the app.
-- *Number of fake clients*: As depicted before, this application supports **fake clients**. It has been designed to be consumed always by two real browsers per session: one acting as presenter and other acting as viewer. This is the case of a one2one video call. In order to convert the session in a one2many, the GUI parameter *Number of fake clients* (in GUI) should be greater that 0. In that case, the application becomes in a one2many, in which N-1 viewers are fake (i.e., they are not browsers consuming the media, but WebRtcEndpoint provided by another instance of KMS). If this value is zero, the application behaves as a one2one video call. All in all, and depending how the GUI is configured, the topology of the application is one of the following:
+- *Session number*: The application can ben *multi-session*, meaning that there can be different simultaneous sessions. Each session is identified by the field *Session number* in the GUI.
+- *Bandwidth (kbps)*: Bandwidth to configure all the WebRtcEndpoints elements handled by the application.
+- *Number of fake clients*: As depicted before, this application supports *fake clients*. It has been designed to be consumed always by two real browsers per session: one acting as presenter and other acting as viewer. This is the case of a one2one video call. In order to convert the session in a one2many, the GUI parameter *Number of fake clients* (in GUI) should be greater that 0. In that case, the application becomes in a one2many, in which the rest of viewers are fake. If this value is zero, the application behaves as a one2one video call. All in all, and depending how the GUI is configured, the topology of the application is one of the following:
 
 ![](https://raw.githubusercontent.com/codeurjc/webrtc-one2many/master/src/main/resources/static/img/topology.png)
 
-- *Rate between clients (milliseconds)*: Time among a fake viewer and the next one.
+- *Rate between clients (milliseconds)*: Time between a fake client enters in the session and the next one.
 - *Remove fake clients*: Boolean value that indicates whether or not the fake clients should be removed after a given time (next value).
 - *Time with all fake clients together (seconds)*: If the previous value is true, this field sets the time in which all the fake clients are consuming media. When this time expires, the fake clients are removed using the same shrinking time used for inclusion.
-- *Number of fake clients per KMS instance*: We can use several KMS URL to create fake clients. As depicted in the tabla before, each URL is separated by `,`. This value is useful to establish when use a new KMS (i.e., create a new KurentoClient) for fake viewers. The following commands use two KMS's for generating fake clients: 
+- *Number of fake clients per KMS instance*: We can use several KMS URL to create fake clients. The number of fake clients created by each KMS is configured with this value (100 by default). As depicted in the table before, each URL is separated by `,`. The following commands use two KMS's for generating fake clients (by default each KMS will provide 100 fake clients): 
 
 ```bash
 mvn spring-boot:run -Dkms.ws.uri=ws://192.168.0.100:8888/kurento -Dfake.kms.ws.uri=ws://192.168.0.101:8888/kurento,ws://192.168.0.102:8888/kurento
 ```
 
-Once the application is up and running, we should click on the *Presenter* button to start the WebRTC session. In another browser, we should click on the *Viewer* button to connect the real viewers and also all the fake clients as configured in the field *Number of fake clients* (by default this value is 10). During the time of the session (i.e. until we click on *Stop*) we can monitor the machine hosting the KMS under test and so on.
+Once the application is up and running, we should navigate to the URL using a browser (e.g Chrome) and click on the *Presenter* button to start the WebRTC session. In another browser, we should click on the *Viewer* button to connect the real viewers and also all the fake clients as configured in the field *Number of fake clients* (by default this value is 10). During the time of the session (i.e. until we click on *Stop*) we can monitor the machine hosting the KMS under test.
 
 News
 ----
