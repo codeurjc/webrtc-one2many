@@ -49,9 +49,10 @@
 			<h1>
 				WebRTC One 2 Many with <i>fake clients</i>
 			</h1>
-			<p>This is a benchmark application aimed to assess the performance of
-				Kurento Media Server. This application is supposed to be started
-				with two parameters:<ul>
+			<p>This is a benchmark application aimed to assess the
+				performance of Kurento Media Server. This application is supposed to
+				be started with two parameters:
+			<ul>
 				<li><code>kms.ws.uri</code>: URL of the KMS under evaluation
 					(by default <code>ws://127.0.0.1:8888/kurento</code>)</li>
 				<li><code>fake.kms.ws.uri</code>: URL of the KMS used to create
@@ -134,7 +135,7 @@
 					<div class="col-xs-4">
 						<input class="form-control" type="text"
 							id="fakeClientsPerInstance" name="fakeClientsPerInstance"
-							value="20"></input>
+							value="100"></input>
 					</div>
 				</div>
 				<div class="row">
@@ -150,10 +151,9 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<br>
-						<sup>*</sup> Notice that if the value of <i>Number of fake
-							clients</i> is 0, then the application behaves as a one-to-one WebRTC
-						video call (one presenter and one viewer).
+						<br> <sup>*</sup> Notice that if the value of <i>Number
+							of fake clients</i> is 0, then the application behaves as a
+						one-to-one WebRTC video call (one presenter and one viewer).
 					</div>
 				</div>
 			</div>
