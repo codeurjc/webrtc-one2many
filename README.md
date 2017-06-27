@@ -42,7 +42,7 @@ After that, the application should be up and running on the URL https://localhos
 mvn spring-boot:run -Dkms.ws.uri=ws://192.168.0.100:8888/kurento -Dfake.kms.ws.uri=ws://192.168.0.101:8888/kurento,ws://192.168.0.102:8888/kurento
 ```
 
-Once the application is up and running, we should navigate to the URL using a browser (e.g Chrome) and click on the *Presenter* button to start the WebRTC session. In another browser, we should click on the *Viewer* button to connect the real viewers and also all the fake clients as configured in the field *Number of fake clients* (by default this value is 10). During the time of the session (i.e. until we click on *Stop*) we can monitor the machine hosting the KMS under test.
+Once the application is up and running, we should navigate to the URL using a browser (e.g. Chrome) and click on the *Presenter* button to start the WebRTC session. In another browser, we should click on the *Viewer* button to connect the real viewers and also all the fake clients as configured in the field *Number of fake clients* (by default this value is 10). During the time of the session (i.e. until we click on *Stop*) we can monitor the machine hosting the KMS under test.
 
 News
 ----
